@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
 
+    public function viewSinglePost(Post $post) // type hinting
+    {
+        //return $post->title;
+        return view('single-post', ['post' => $post]);
+        //return "single post test";
+    }
+
     public function storeNewPost(Request $request)
     {
         $incomingFields = $request->validate([
@@ -24,5 +31,6 @@ class PostController extends Controller
     public function showCreateForm()
     {
         return view('create-post');
+        //return "Hello from Post"
     }
 }
