@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
 
-    public function viewSinglePost(Post $post) // type hinting
+    public function viewSinglePost(Post $post) // type hinting could be $pizza
     {
         //return $post->title;
-        return view('single-post', ['post' => $post]);
+        return view('single-post', ['post' => $post]); // could be pizza
         //return "single post test";
     }
 
@@ -24,8 +24,8 @@ class PostController extends Controller
         $incomingFields['title'] = strip_tags($incomingFields['title']);
         $incomingFields['body'] = strip_tags($incomingFields['body']);
         $incomingFields['user_id'] = auth()->id();
-        Post::create($incomingFields);
-        return $incomingFields;
+        $newPost = Post::create($incomingFields);
+        return redirect("/post/{$newPost->id}")->with('success', 'New post successfully created');
     }
 
     public function showCreateForm()

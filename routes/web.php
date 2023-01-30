@@ -24,4 +24,4 @@ Route::post('/logout', [UserController::class, "logout"]);
 // Blog post related routes  -- git new repo 1:42pm
 Route::get('/create-post', [PostController::class, "showCreateForm"]);
 Route::post('/create-post', [PostController::class, "storeNewPost"]);
-Route::get('/post/{post}', [PostController::class, "viewSinglePost"]);
+Route::get('/post/{post}', [PostController::class, "viewSinglePost"]); // post could be pizza
