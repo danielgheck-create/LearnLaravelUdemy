@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -10,8 +11,12 @@ class PostController extends Controller
 
     public function viewSinglePost(Post $post) // type hinting could be $pizza
     {
-        //return $post->title;
+
+        $ourHTML = strip_tags(Str::markdown($post->body), '<p><h1><h2><ul><li><strong><br>');
+        $post['body'] = $ourHTML;
+
         return view('single-post', ['post' => $post]); // could be pizza
+        //return $post->title;
         //return "single post test";
     }
 

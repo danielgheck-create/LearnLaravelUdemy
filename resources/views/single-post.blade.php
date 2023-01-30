@@ -16,7 +16,7 @@
     </p>
 
     <div class="body-content">
-        {{$post->body}}
+        {!! $post->body !!} <!-- don't escape HTML, however can be a big security hole. We used striptags so it is more save --> 
     </div>
   </div>
 </x-layout>
